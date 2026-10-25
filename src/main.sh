@@ -74,7 +74,7 @@ fi
 # package logic
 if [ "$ID" = "alpine" ]; then
     pkgs=$(apk info -q | wc -l)
-fiQ
+fi
 
 if [ "$ID" = "arch" ]; then
     pkgs=$(pacman -Q | wc -l)
