@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+fi
+
+if [ "$ID" = "alpine" ]; then
+
 logo='                        
        ++++++++++++++++       
       ++++++++++++++++++      
@@ -16,9 +22,35 @@ logo='
       ++++++++++++++++++
        ++++++++++++++++       
                               
-'                  
+'
+fi
+
+if [ "$ID" = "arch" ]; then
+    logo="                              
+              ++              
+              ++              
+             ++++             
+             +++++            
+           ++++++++           
+          ++++++++++          
+         ++++++-+++++         
+        +++++    +++++        
+       ++++++    ++++++       
+      +++++        +++++      
+     ++                ++     
+                              
+"
+fi
+
 utime=$(awk '{printf "%d mins\n", $1 / 60}' /proc/uptime)
-pkgs=$(apk info -q | wc -l)
+if [ "$ID" = alpine ]; then
+	pkgs=$(apk info -q | wc -l)
+fi
+
+if [ "$ID" = arch ]; then
+    pkgs=$(pacman -Q | wc -l)
+fi
+
 cpu=$(grep "model name" /proc/cpuinfo | head -n 1 | cut -d':' -f2 | xargs)
 os=$(grep "PRETTY_NAME" /etc/os-release | cut -d'"' -f2)
 host=$(cat /etc/hostname)
