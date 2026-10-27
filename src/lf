@@ -116,5 +116,5 @@ uptime: $utime
 cpu: $cpu
 ram: $ram
 pkgs: $pkgs
-gpu: $gpu
+gpu driver: $gpu
 EOF
