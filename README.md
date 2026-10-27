@@ -1,2 +1,3 @@
 my tiny fetch tool lazyfetch, it doesnt have much, pretty suckless, and made in posix sh.
-<img width="1920" height="1080" alt="lfetch" src="https://github.com/user-attachments/assets/9b70a07d-7cc4-45c6-bbd2-bc5f72f9d5b1" />
+<img width="1920" height="1080" alt="lf" src="https://github.com/user-attachments/assets/175cd202-496f-4bb7-b33d-dccf2bcfa20e" />
+
