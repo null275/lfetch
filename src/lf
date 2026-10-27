@@ -91,6 +91,7 @@ fi
 # variables
 utime=$(awk '{printf "%d mins\n", $1 / 60}' /proc/uptime)
 cpu=$(grep "model name" /proc/cpuinfo | head -n 1 | cut -d':' -f2 | xargs)
+gpu=$(for c in /sys/class/drm/card[0-9]; do [ -d "$c/device" ] && [ -f "$c/device/uevent" ] && while IFS= read -r l; do case "$l" in DRIVER=*) echo "${l#DRIVER=}" && break 2 ;; esac; done < "$c/device/uevent"; done)
 os=$(grep "PRETTY_NAME" /etc/os-release | cut -d'"' -f2)
 host=$(cat /etc/hostname)
 user=$(whoami)
@@ -115,4 +116,5 @@ uptime: $utime
 cpu: $cpu
 ram: $ram
 pkgs: $pkgs
+gpu: $gpu
 EOF
